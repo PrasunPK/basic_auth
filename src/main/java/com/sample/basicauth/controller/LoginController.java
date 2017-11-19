@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Map;
-
 @RestController
 public class LoginController {
 
@@ -15,9 +13,14 @@ public class LoginController {
     private String message = "Hello World";
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public ModelAndView welcome(Map<String, Object> model) {
+    public ModelAndView welcome() {
         ModelAndView mav = new ModelAndView("welcome");
         mav.addObject("message", this.message);
         return mav;
+    }
+
+    @RequestMapping("/login")
+    public boolean login() {
+        return true;
     }
 }
