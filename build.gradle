@@ -11,7 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 group = 'com.sample'
@@ -22,9 +22,19 @@ repositories {
 	mavenCentral()
 }
 
+jar {
+	baseName = 'basic-auth-service'
+	version =  '0.1.0'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.5.1'
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 }
